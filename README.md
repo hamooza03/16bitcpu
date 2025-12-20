@@ -8,8 +8,6 @@ This is my attempt to convert the very same design into Verilog. I used Icarus V
 - 16-bit Datapath
 - Synchronous, single clocked system
 
-## Architecture Summary
-
 ## Current Components
 - Arithmetic Logic Unit (ALU)
 - Register File (RF)
