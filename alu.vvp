@@ -1,0 +1,184 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.7 " "(v0_9_7)";
+:vpi_time_precision - 12;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_01122098 .scope module, "alu" "alu" 2 2;
+ .timescale -12 -12;
+L_0115EE40 .functor AND 16, C4<zzzzzzzzzzzzzzzz>, C4<zzzzzzzzzzzzzzzz>, C4<1111111111111111>, C4<1111111111111111>;
+L_0115EE78 .functor OR 16, C4<zzzzzzzzzzzzzzzz>, C4<zzzzzzzzzzzzzzzz>, C4<0000000000000000>, C4<0000000000000000>;
+L_0115ED60 .functor OR 16, C4<zzzzzzzzzzzzzzzz>, C4<zzzzzzzzzzzzzzzz>, C4<0000000000000000>, C4<0000000000000000>;
+L_0115ECF0 .functor NOT 16, L_0115ED60, C4<0000000000000000>, C4<0000000000000000>, C4<0000000000000000>;
+L_01130B30 .functor OR 1, L_0115E458, L_0115E400, C4<0>, C4<0>;
+L_0115F360 .functor XNOR 1, L_0115EBE8, L_0115E928, C4<0>, C4<0>;
+L_0115F600 .functor XOR 1, L_0115EB90, L_0115EA30, C4<0>, C4<0>;
+L_0115F670 .functor AND 1, L_0115F360, L_0115F600, C4<1>, C4<1>;
+L_0115F4E8 .functor XOR 1, L_0115E7C8, L_0115E820, C4<0>, C4<0>;
+L_0115F558 .functor XOR 1, L_0115E980, L_0115E8D0, C4<0>, C4<0>;
+L_0115F088 .functor AND 1, L_0115F4E8, L_0115F558, C4<1>, C4<1>;
+L_0115F280 .functor OR 1, L_0115EA88, L_0115E878, C4<0>, C4<0>;
+v010FA860_0 .net "A", 15 0, C4<zzzzzzzzzzzzzzzz>; 0 drivers
+v010FA8B8_0 .net "B", 15 0, C4<zzzzzzzzzzzzzzzz>; 0 drivers
+v010FA968_0 .net "C", 0 0, L_01130B30; 1 drivers
+v0115DA80_0 .net "C_add", 0 0, L_0115E458; 1 drivers
+v0115D8C8_0 .net "C_sub", 0 0, L_0115E400; 1 drivers
+v0115DB88_0 .net "N", 0 0, L_0115E2F8; 1 drivers
+v0115DA28_0 .var "R", 16 0;
+v0115DAD8_0 .net "R_AND", 15 0, L_0115EE40; 1 drivers
+v0115DB30_0 .net "R_ASR", 15 0, L_0115E0E8; 1 drivers
+v0115DBE0_0 .net "R_LSL", 15 0, L_0115DDD0; 1 drivers
+v0115D768_0 .net "R_LSR", 15 0, L_0115DE80; 1 drivers
+v0115D7C0_0 .net "R_NOR", 15 0, L_0115ECF0; 1 drivers
+v0115D818_0 .net "R_OR", 15 0, L_0115EE78; 1 drivers
+v0115D870_0 .net "R_add", 16 0, L_0115DD78; 1 drivers
+v0115D920_0 .net "R_sub", 16 0, L_0115E2A0; 1 drivers
+v0115D978_0 .net "V", 0 0, L_0115F280; 1 drivers
+v0115D9D0_0 .net "V_add", 0 0, L_0115EA88; 1 drivers
+v0115D5B0_0 .net "V_sub", 0 0, L_0115E878; 1 drivers
+v0115D4A8_0 .net "Z", 0 0, L_0115E140; 1 drivers
+v0115D088_0 .net *"_s0", 16 0, L_0115E090; 1 drivers
+v0115CCC0_0 .net *"_s10", 16 0, L_0115E610; 1 drivers
+v0115CC68_0 .net *"_s101", 0 0, L_0115E980; 1 drivers
+v0115D3A0_0 .net *"_s103", 0 0, L_0115E8D0; 1 drivers
+v0115D030_0 .net *"_s104", 0 0, L_0115F558; 1 drivers
+v0115CED0_0 .net *"_s106", 0 0, L_0115F088; 1 drivers
+v0115CFD8_0 .net *"_s108", 0 0, C4<0>; 1 drivers
+v0115D6B8_0 .net *"_s13", 0 0, C4<0>; 1 drivers
+v0115D710_0 .net *"_s14", 16 0, L_0115DC70; 1 drivers
+v0115D348_0 .net *"_s17", 0 0, C4<0>; 1 drivers
+v0115CE78_0 .net *"_s24", 15 0, L_0115ED60; 1 drivers
+v0115D500_0 .net *"_s29", 3 0, L_0115DCC8; 1 drivers
+v0115D2F0_0 .net *"_s3", 0 0, C4<0>; 1 drivers
+v0115CD18_0 .net *"_s33", 3 0, L_0115DFE0; 1 drivers
+v0115D3F8_0 .net *"_s37", 3 0, L_0115DF88; 1 drivers
+v0115D138_0 .net *"_s4", 16 0, L_0115E560; 1 drivers
+v0115D190_0 .net *"_s42", 16 0, C4<00000000000000000>; 1 drivers
+v0115CD70_0 .net *"_s46", 2 0, C4<000>; 1 drivers
+v0115CDC8_0 .net *"_s48", 0 0, L_0115E198; 1 drivers
+v0115D450_0 .net *"_s51", 0 0, L_0115E1F0; 1 drivers
+v0115D298_0 .net *"_s52", 0 0, C4<0>; 1 drivers
+v0115CE20_0 .net *"_s56", 2 0, C4<001>; 1 drivers
+v0115CF28_0 .net *"_s58", 0 0, L_0115E3A8; 1 drivers
+v0115D660_0 .net *"_s61", 0 0, L_0115E350; 1 drivers
+v0115CF80_0 .net *"_s62", 0 0, C4<0>; 1 drivers
+v0115D0E0_0 .net *"_s68", 2 0, C4<000>; 1 drivers
+v0115D1E8_0 .net *"_s7", 0 0, C4<0>; 1 drivers
+v0115D558_0 .net *"_s70", 0 0, L_0115E9D8; 1 drivers
+v0115D240_0 .net *"_s73", 0 0, L_0115EBE8; 1 drivers
+v0115D608_0 .net *"_s75", 0 0, L_0115E928; 1 drivers
+v0115E508_0 .net *"_s76", 0 0, L_0115F360; 1 drivers
+v0115DE28_0 .net *"_s79", 0 0, L_0115EB90; 1 drivers
+v0115E668_0 .net *"_s81", 0 0, L_0115EA30; 1 drivers
+v0115E248_0 .net *"_s82", 0 0, L_0115F600; 1 drivers
+v0115DF30_0 .net *"_s84", 0 0, L_0115F670; 1 drivers
+v0115E6C0_0 .net *"_s86", 0 0, C4<0>; 1 drivers
+v0115DD20_0 .net *"_s90", 2 0, C4<001>; 1 drivers
+v0115E038_0 .net *"_s92", 0 0, L_0115E770; 1 drivers
+v0115E5B8_0 .net *"_s95", 0 0, L_0115E7C8; 1 drivers
+v0115E4B0_0 .net *"_s97", 0 0, L_0115E820; 1 drivers
+v0115E718_0 .net *"_s98", 0 0, L_0115F4E8; 1 drivers
+v0115DED8_0 .net "fun", 2 0, C4<zzz>; 0 drivers
+E_01124818/0 .event edge, v0115DED8_0, v0115D870_0, v0115D920_0, v0115DAD8_0;
+E_01124818/1 .event edge, v0115D818_0, v0115D7C0_0, v0115DBE0_0, v0115D768_0;
+E_01124818/2 .event edge, v0115DB30_0;
+E_01124818 .event/or E_01124818/0, E_01124818/1, E_01124818/2;
+L_0115E090 .concat [ 16 1 0 0], C4<zzzzzzzzzzzzzzzz>, C4<0>;
+L_0115E560 .concat [ 16 1 0 0], C4<zzzzzzzzzzzzzzzz>, C4<0>;
+L_0115DD78 .arith/sum 17, L_0115E090, L_0115E560;
+L_0115E610 .concat [ 16 1 0 0], C4<zzzzzzzzzzzzzzzz>, C4<0>;
+L_0115DC70 .concat [ 16 1 0 0], C4<zzzzzzzzzzzzzzzz>, C4<0>;
+L_0115E2A0 .arith/sub 17, L_0115E610, L_0115DC70;
+L_0115DCC8 .part C4<zzzzzzzzzzzzzzzz>, 0, 4;
+L_0115DDD0 .shift/l 16, C4<zzzzzzzzzzzzzzzz>, L_0115DCC8;
+L_0115DFE0 .part C4<zzzzzzzzzzzzzzzz>, 0, 4;
+L_0115DE80 .shift/r 16, C4<zzzzzzzzzzzzzzzz>, L_0115DFE0;
+L_0115DF88 .part C4<zzzzzzzzzzzzzzzz>, 0, 4;
+L_0115E0E8 .shift/rs 16, C4<zzzzzzzzzzzzzzzz>, L_0115DF88;
+L_0115E2F8 .part v0115DA28_0, 15, 1;
+L_0115E140 .cmp/eq 17, v0115DA28_0, C4<00000000000000000>;
+L_0115E198 .cmp/eq 3, C4<zzz>, C4<000>;
+L_0115E1F0 .part L_0115DD78, 16, 1;
+L_0115E458 .functor MUXZ 1, C4<0>, L_0115E1F0, L_0115E198, C4<>;
+L_0115E3A8 .cmp/eq 3, C4<zzz>, C4<001>;
+L_0115E350 .part L_0115E2A0, 16, 1;
+L_0115E400 .functor MUXZ 1, C4<0>, L_0115E350, L_0115E3A8, C4<>;
+L_0115E9D8 .cmp/eq 3, C4<zzz>, C4<000>;
+L_0115EBE8 .part C4<zzzzzzzzzzzzzzzz>, 15, 1;
+L_0115E928 .part C4<zzzzzzzzzzzzzzzz>, 15, 1;
+L_0115EB90 .part L_0115DD78, 15, 1;
+L_0115EA30 .part C4<zzzzzzzzzzzzzzzz>, 15, 1;
+L_0115EA88 .functor MUXZ 1, C4<0>, L_0115F670, L_0115E9D8, C4<>;
+L_0115E770 .cmp/eq 3, C4<zzz>, C4<001>;
+L_0115E7C8 .part C4<zzzzzzzzzzzzzzzz>, 15, 1;
+L_0115E820 .part C4<zzzzzzzzzzzzzzzz>, 15, 1;
+L_0115E980 .part L_0115E2A0, 15, 1;
+L_0115E8D0 .part C4<zzzzzzzzzzzzzzzz>, 15, 1;
+L_0115E878 .functor MUXZ 1, C4<0>, L_0115F088, L_0115E770, C4<>;
+    .scope S_01122098;
+T_0 ;
+    %wait E_01124818;
+    %load/v 8, v0115DED8_0, 3;
+    %cmpi/u 8, 0, 3;
+    %jmp/1 T_0.0, 6;
+    %cmpi/u 8, 1, 3;
+    %jmp/1 T_0.1, 6;
+    %cmpi/u 8, 2, 3;
+    %jmp/1 T_0.2, 6;
+    %cmpi/u 8, 3, 3;
+    %jmp/1 T_0.3, 6;
+    %cmpi/u 8, 4, 3;
+    %jmp/1 T_0.4, 6;
+    %cmpi/u 8, 5, 3;
+    %jmp/1 T_0.5, 6;
+    %cmpi/u 8, 6, 3;
+    %jmp/1 T_0.6, 6;
+    %cmpi/u 8, 7, 3;
+    %jmp/1 T_0.7, 6;
+    %jmp T_0.9;
+T_0.0 ;
+    %load/v 8, v0115D870_0, 17;
+    %set/v v0115DA28_0, 8, 17;
+    %jmp T_0.9;
+T_0.1 ;
+    %load/v 8, v0115D920_0, 17;
+    %set/v v0115DA28_0, 8, 17;
+    %jmp T_0.9;
+T_0.2 ;
+    %load/v 8, v0115DAD8_0, 16;
+    %mov 24, 0, 1;
+    %set/v v0115DA28_0, 8, 17;
+    %jmp T_0.9;
+T_0.3 ;
+    %load/v 8, v0115D818_0, 16;
+    %mov 24, 0, 1;
+    %set/v v0115DA28_0, 8, 17;
+    %jmp T_0.9;
+T_0.4 ;
+    %load/v 8, v0115D7C0_0, 16;
+    %mov 24, 0, 1;
+    %set/v v0115DA28_0, 8, 17;
+    %jmp T_0.9;
+T_0.5 ;
+    %load/v 8, v0115DBE0_0, 16;
+    %mov 24, 0, 1;
+    %set/v v0115DA28_0, 8, 17;
+    %jmp T_0.9;
+T_0.6 ;
+    %load/v 8, v0115D768_0, 16;
+    %mov 24, 0, 1;
+    %set/v v0115DA28_0, 8, 17;
+    %jmp T_0.9;
+T_0.7 ;
+    %load/v 8, v0115DB30_0, 16;
+    %mov 24, 0, 1;
+    %set/v v0115DA28_0, 8, 17;
+    %jmp T_0.9;
+T_0.9 ;
+    %jmp T_0;
+    .thread T_0, $push;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "alu.v";

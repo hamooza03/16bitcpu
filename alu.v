@@ -1,6 +1,7 @@
+`timescale 1ps/1ps
 module alu(
-    input reg [15:0] A,  // input 1
-    input reg [15:0] B,  // input 2
+    input [15:0] A,  // input 1
+    input [15:0] B,  // input 2
     input [2:0] fun, // Selector
     // Flags
     output N, // Negative
@@ -10,7 +11,8 @@ module alu(
     output reg [16:0] R
 );
     // Intermediate Results
-    reg [16:0] R_add, R_sub, R_AND, R_OR, R_NOR, R_LSL, R_LSR, R_ASR;
+    wire [16:0] R_add, R_sub;
+    wire [15:0] R_AND, R_OR, R_NOR, R_LSL, R_LSR, R_ASR;
     
     // ALU Intermediate Results
     assign R_add = A + B;
@@ -33,12 +35,13 @@ module alu(
             3'b101: R = R_LSL; // LSL
             3'b110: R = R_LSR; // LSR
             3'b111: R = R_ASR; // ASR
-        default:;
+            default: ;
+        endcase
     end
 
     // Flags
     assign N = R[15]; // Negative
-    assign Z = (R == 16'b0); // Zero
+    assign Z = (R == 17'b0); // Zero
     
     // Carry flag for ADD and SUB
     wire C_add, C_sub;
