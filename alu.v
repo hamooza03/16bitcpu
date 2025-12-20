@@ -8,15 +8,17 @@ module alu(
     output Z, // Zero
     output C, // Carry
     output V, // Overflow
-    output reg [16:0] R
+    output reg [15:0] R
 );
     // Intermediate Results
     wire [16:0] R_add, R_sub;
     wire [15:0] R_AND, R_OR, R_NOR, R_LSL, R_LSR, R_ASR;
+    wire [16:0] A_ext = {1'b0, A};
+    wire [16:0] B_ext = {1'b0, B};
     
     // ALU Intermediate Results
-    assign R_add = A + B;
-    assign R_sub = A - B;
+    assign R_add = A_ext + B_ext;
+    assign R_sub = A_ext - B_ext;
     assign R_AND = A & B;
     assign R_OR  = A | B;
     assign R_NOR = ~(A | B);
@@ -26,9 +28,10 @@ module alu(
     
     // MUX / ALU result selection
     always @(*) begin
+        R = 16'd0;
         case(fun)
-            3'b000: R = R_add; // ADD
-            3'b001: R = R_sub; // SUB
+            3'b000: R = R_add[15:0]; // ADD
+            3'b001: R = R_sub[15:0]; // SUB
             3'b010: R = R_AND; // AND
             3'b011: R = R_OR;  // OR
             3'b100: R = R_NOR; // NOR
@@ -41,12 +44,11 @@ module alu(
 
     // Flags
     assign N = R[15]; // Negative
-    assign Z = (R == 17'b0); // Zero
+    assign Z = (R == 16'b0); // Zero
     
     // Carry flag for ADD and SUB
-    wire C_add, C_sub;
-    assign C_add = (fun == 3'b000) ? R_add[16] : 1'b0;
-    assign C_sub = (fun == 3'b001) ? R_sub[16] : 1'b0;
+    wire C_add = (fun == 3'b000) ? R_add[16] : 1'b0;
+    wire C_sub = (fun == 3'b001) ? ~R_sub[16] : 1'b0;
     assign C = C_add | C_sub;
 
     // Overflow flag for ADD and SUB
