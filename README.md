@@ -26,3 +26,13 @@ This is my attempt to convert the very same design into Verilog. I used Icarus V
 | `101`     | LSL      | `R = A << B[3:0]`                      | Logical shift left by `B[3:0]` |
 | `110`     | LSR      | `R = A >> B[3:0]`                      | Logical shift right by `B[3:0]` |
 | `111`     | ASR      | `R = $signed(A) >>> B[3:0]`            | Arithmetic shift right (sign-extends) |
+
+- Output flags are included such as N, Z, C, and V
+
+## Register File
+- The CPU uses an 8 x 16-bit register file
+
+## Finite State Machine
+- 5 states: Fetch, Decode, Execute, Memory and Writeback
+- Uses a 5 bit counter and resets either from a reset instruction or the counter reaching clk=5 operations
+
