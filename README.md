@@ -1,7 +1,7 @@
 # 16-bit CPU - Verilog Implementation
 
 ## Overview
-In my Computer Organization we were instructed to create a 16-bit CPU in Logisim, a simulation software that allows you to place block diagrams to create Digital circuit designs. 
+In my Computer Organization we were instructed to create a 16-bit CPU in [Logisim](https://cburch.com/logisim/), a simulation software that allows you to place block diagrams to create Digital circuit designs. 
 This is my attempt to convert the very same design into Verilog. I used Icarus Verilog to compile and GTKWave for simulation.
 
 ## Key Features
