@@ -32,5 +32,5 @@ This is my attempt to convert the very same design into Verilog. I used Icarus V
 
 ## Finite State Machine
 - 5 states: Fetch, Decode, Execute, Memory and Writeback
-- Uses a 5 bit counter and resets either from a reset instruction or the counter reaching clk=5 operations
+- Uses a 3-bit counter and resets either from a reset instruction or the counter reaching clk=5 operations
 
