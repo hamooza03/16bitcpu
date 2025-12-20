@@ -1,602 +1,335 @@
-#! /c/iverilog/bin/vvp
-:ivl_version "0.9.7 " "(v0_9_7)";
-:vpi_time_precision - 12;
-:vpi_module "system";
-:vpi_module "v2005_math";
-:vpi_module "va_math";
-S_01154248 .scope module, "alu_tb" "alu_tb" 2 2;
- .timescale -12 -12;
-v01161048_0 .var "A", 15 0;
-v011610F8_0 .var "B", 15 0;
-v01160CD8_0 .net "C", 0 0, L_0119E578; 1 drivers
-v011611A8_0 .net "N", 0 0, L_0119C1F8; 1 drivers
-v01160B78_0 .net "R", 15 0, v0119A850_0; 1 drivers
-v01160BD0_0 .net "V", 0 0, L_011613C8; 1 drivers
-v01160D30_0 .net "Z", 0 0, L_0119C1A0; 1 drivers
-v0119BB70_0 .var "fun", 2 0;
-S_01154C60 .scope task, "do_test" "do_test" 2 10, 2 10, S_01154248;
- .timescale -12 -12;
-v01160E38_0 .var "a", 15 0;
-v01160A70_0 .var "b", 15 0;
-v01160AC8_0 .var "expC", 0 0;
-v01160F98_0 .var "expN", 0 0;
-v01161150_0 .var "expR", 15 0;
-v01160FF0_0 .var "expR_ext", 16 0;
-v01160C28_0 .var "expV", 0 0;
-v011610A0_0 .var "expZ", 0 0;
-v01160B20_0 .var "op", 2 0;
-TD_alu_tb.do_test ;
-    %load/v 8, v01160E38_0, 16;
-    %set/v v01161048_0, 8, 16;
-    %load/v 8, v01160A70_0, 16;
-    %set/v v011610F8_0, 8, 16;
-    %load/v 8, v01160B20_0, 3;
-    %set/v v0119BB70_0, 8, 3;
-    %delay 1, 0;
-    %load/v 8, v01160B20_0, 3;
-    %cmpi/u 8, 0, 3;
-    %jmp/1 T_0.0, 6;
-    %cmpi/u 8, 1, 3;
-    %jmp/1 T_0.1, 6;
-    %cmpi/u 8, 2, 3;
-    %jmp/1 T_0.2, 6;
-    %cmpi/u 8, 3, 3;
-    %jmp/1 T_0.3, 6;
-    %cmpi/u 8, 4, 3;
-    %jmp/1 T_0.4, 6;
-    %cmpi/u 8, 5, 3;
-    %jmp/1 T_0.5, 6;
-    %cmpi/u 8, 6, 3;
-    %jmp/1 T_0.6, 6;
-    %cmpi/u 8, 7, 3;
-    %jmp/1 T_0.7, 6;
-    %set/v v01160FF0_0, 0, 17;
-    %jmp T_0.9;
-T_0.0 ;
-    %load/v 8, v01160E38_0, 16;
-    %mov 24, 0, 1;
-    %load/v 25, v01160A70_0, 16;
-    %mov 41, 0, 1;
-    %add 8, 25, 17;
-    %set/v v01160FF0_0, 8, 17;
-    %jmp T_0.9;
-T_0.1 ;
-    %load/v 8, v01160E38_0, 16;
-    %mov 24, 0, 1;
-    %load/v 25, v01160A70_0, 16;
-    %mov 41, 0, 1;
-    %sub 8, 25, 17;
-    %set/v v01160FF0_0, 8, 17;
-    %jmp T_0.9;
-T_0.2 ;
-    %load/v 25, v01160E38_0, 16;
-    %load/v 41, v01160A70_0, 16;
-    %and 25, 41, 16;
-    %mov 8, 25, 16;
-    %mov 24, 0, 1;
-    %set/v v01160FF0_0, 8, 17;
-    %jmp T_0.9;
-T_0.3 ;
-    %load/v 25, v01160E38_0, 16;
-    %load/v 41, v01160A70_0, 16;
-    %or 25, 41, 16;
-    %mov 8, 25, 16;
-    %mov 24, 0, 1;
-    %set/v v01160FF0_0, 8, 17;
-    %jmp T_0.9;
-T_0.4 ;
-    %load/v 25, v01160E38_0, 16;
-    %load/v 41, v01160A70_0, 16;
-    %or 25, 41, 16;
-    %inv 25, 16;
-    %mov 8, 25, 16;
-    %mov 24, 0, 1;
-    %set/v v01160FF0_0, 8, 17;
-    %jmp T_0.9;
-T_0.5 ;
-    %load/v 25, v01160E38_0, 16;
-    %load/v 41, v01160A70_0, 4; Only need 4 of 16 bits
-; Save base=41 wid=4 in lookaside.
-    %ix/get 0, 41, 4;
-    %shiftl/i0  25, 16;
-    %mov 8, 25, 16;
-    %mov 24, 0, 1;
-    %set/v v01160FF0_0, 8, 17;
-    %jmp T_0.9;
-T_0.6 ;
-    %load/v 25, v01160E38_0, 16;
-    %load/v 41, v01160A70_0, 4; Only need 4 of 16 bits
-; Save base=41 wid=4 in lookaside.
-    %ix/get 0, 41, 4;
-    %shiftr/i0  25, 16;
-    %mov 8, 25, 16;
-    %mov 24, 0, 1;
-    %set/v v01160FF0_0, 8, 17;
-    %jmp T_0.9;
-T_0.7 ;
-    %load/v 25, v01160E38_0, 16;
-    %load/v 41, v01160A70_0, 4; Only need 4 of 16 bits
-; Save base=41 wid=4 in lookaside.
-    %ix/get 0, 41, 4;
-    %shiftr/s/i0  25, 16;
-    %mov 8, 25, 16;
-    %mov 24, 0, 1;
-    %set/v v01160FF0_0, 8, 17;
-    %jmp T_0.9;
-T_0.9 ;
-    %load/v 8, v01160FF0_0, 16; Only need 16 of 17 bits
-; Save base=8 wid=16 in lookaside.
-    %set/v v01161150_0, 8, 16;
-    %ix/load 1, 15, 0;
-    %mov 4, 0, 1;
-    %jmp/1 T_0.10, 4;
-    %load/x1p 8, v01161150_0, 1;
-    %jmp T_0.11;
-T_0.10 ;
-    %mov 8, 2, 1;
-T_0.11 ;
-; Save base=8 wid=1 in lookaside.
-    %set/v v01160F98_0, 8, 1;
-    %load/v 8, v01161150_0, 16;
-    %cmpi/u 8, 0, 16;
-    %mov 8, 4, 1;
-    %set/v v011610A0_0, 8, 1;
-    %load/v 8, v01160B20_0, 3;
-    %cmpi/u 8, 0, 3;
-    %mov 8, 4, 1;
-    %jmp/0  T_0.12, 8;
-    %ix/load 1, 16, 0;
-    %mov 4, 0, 1;
-    %jmp/1 T_0.15, 4;
-    %load/x1p 9, v01160FF0_0, 1;
-    %jmp T_0.16;
-T_0.15 ;
-    %mov 9, 2, 1;
-T_0.16 ;
-; Save base=9 wid=1 in lookaside.
-    %jmp/1  T_0.14, 8;
-T_0.12 ; End of true expr.
-    %load/v 10, v01160B20_0, 3;
-    %cmpi/u 10, 1, 3;
-    %mov 10, 4, 1;
-    %jmp/0  T_0.17, 10;
-    %ix/load 1, 16, 0;
-    %mov 4, 0, 1;
-    %jmp/1 T_0.20, 4;
-    %load/x1p 11, v01160FF0_0, 1;
-    %jmp T_0.21;
-T_0.20 ;
-    %mov 11, 2, 1;
-T_0.21 ;
-; Save base=11 wid=1 in lookaside.
-    %inv 11, 1;
-    %jmp/1  T_0.19, 10;
-T_0.17 ; End of true expr.
-    %jmp/0  T_0.18, 10;
- ; End of false expr.
-    %blend  11, 0, 1; Condition unknown.
-    %jmp  T_0.19;
-T_0.18 ;
-    %mov 11, 0, 1; Return false value
-T_0.19 ;
-    %jmp/0  T_0.13, 8;
- ; End of false expr.
-    %blend  9, 11, 1; Condition unknown.
-    %jmp  T_0.14;
-T_0.13 ;
-    %mov 9, 11, 1; Return false value
-T_0.14 ;
-    %set/v v01160AC8_0, 9, 1;
-    %load/v 8, v01160B20_0, 3;
-    %cmpi/u 8, 0, 3;
-    %mov 8, 4, 1;
-    %jmp/0  T_0.22, 8;
-    %ix/load 1, 15, 0;
-    %mov 4, 0, 1;
-    %jmp/1 T_0.25, 4;
-    %load/x1p 9, v01160E38_0, 1;
-    %jmp T_0.26;
-T_0.25 ;
-    %mov 9, 2, 1;
-T_0.26 ;
-; Save base=9 wid=1 in lookaside.
-    %ix/load 1, 15, 0;
-    %mov 4, 0, 1;
-    %jmp/1 T_0.27, 4;
-    %load/x1p 10, v01160A70_0, 1;
-    %jmp T_0.28;
-T_0.27 ;
-    %mov 10, 2, 1;
-T_0.28 ;
-; Save base=10 wid=1 in lookaside.
-    %cmp/u 9, 10, 1;
-    %mov 9, 4, 1;
-    %ix/load 1, 15, 0;
-    %mov 4, 0, 1;
-    %jmp/1 T_0.29, 4;
-    %load/x1p 10, v01161150_0, 1;
-    %jmp T_0.30;
-T_0.29 ;
-    %mov 10, 2, 1;
-T_0.30 ;
-; Save base=10 wid=1 in lookaside.
-    %ix/load 1, 15, 0;
-    %mov 4, 0, 1;
-    %jmp/1 T_0.31, 4;
-    %load/x1p 11, v01160E38_0, 1;
-    %jmp T_0.32;
-T_0.31 ;
-    %mov 11, 2, 1;
-T_0.32 ;
-; Save base=11 wid=1 in lookaside.
-    %cmp/u 10, 11, 1;
-    %inv 4, 1;
-    %mov 10, 4, 1;
-    %and 9, 10, 1;
-    %jmp/1  T_0.24, 8;
-T_0.22 ; End of true expr.
-    %load/v 10, v01160B20_0, 3;
-    %cmpi/u 10, 1, 3;
-    %mov 10, 4, 1;
-    %jmp/0  T_0.33, 10;
-    %ix/load 1, 15, 0;
-    %mov 4, 0, 1;
-    %jmp/1 T_0.36, 4;
-    %load/x1p 11, v01160E38_0, 1;
-    %jmp T_0.37;
-T_0.36 ;
-    %mov 11, 2, 1;
-T_0.37 ;
-; Save base=11 wid=1 in lookaside.
-    %ix/load 1, 15, 0;
-    %mov 4, 0, 1;
-    %jmp/1 T_0.38, 4;
-    %load/x1p 12, v01160A70_0, 1;
-    %jmp T_0.39;
-T_0.38 ;
-    %mov 12, 2, 1;
-T_0.39 ;
-; Save base=12 wid=1 in lookaside.
-    %cmp/u 11, 12, 1;
-    %inv 4, 1;
-    %mov 11, 4, 1;
-    %ix/load 1, 15, 0;
-    %mov 4, 0, 1;
-    %jmp/1 T_0.40, 4;
-    %load/x1p 12, v01161150_0, 1;
-    %jmp T_0.41;
-T_0.40 ;
-    %mov 12, 2, 1;
-T_0.41 ;
-; Save base=12 wid=1 in lookaside.
-    %ix/load 1, 15, 0;
-    %mov 4, 0, 1;
-    %jmp/1 T_0.42, 4;
-    %load/x1p 13, v01160E38_0, 1;
-    %jmp T_0.43;
-T_0.42 ;
-    %mov 13, 2, 1;
-T_0.43 ;
-; Save base=13 wid=1 in lookaside.
-    %cmp/u 12, 13, 1;
-    %inv 4, 1;
-    %mov 12, 4, 1;
-    %and 11, 12, 1;
-    %jmp/1  T_0.35, 10;
-T_0.33 ; End of true expr.
-    %jmp/0  T_0.34, 10;
- ; End of false expr.
-    %blend  11, 0, 1; Condition unknown.
-    %jmp  T_0.35;
-T_0.34 ;
-    %mov 11, 0, 1; Return false value
-T_0.35 ;
-    %jmp/0  T_0.23, 8;
- ; End of false expr.
-    %blend  9, 11, 1; Condition unknown.
-    %jmp  T_0.24;
-T_0.23 ;
-    %mov 9, 11, 1; Return false value
-T_0.24 ;
-    %set/v v01160C28_0, 9, 1;
-    %load/v 8, v01160B78_0, 16;
-    %load/v 24, v01161150_0, 16;
-    %cmp/u 8, 24, 16;
-    %inv 6, 1;
-    %mov 8, 6, 1;
-    %load/v 9, v011611A8_0, 1;
-    %load/v 10, v01160F98_0, 1;
-    %cmp/u 9, 10, 1;
-    %inv 6, 1;
-    %or 8, 6, 1;
-    %load/v 9, v01160D30_0, 1;
-    %load/v 10, v011610A0_0, 1;
-    %cmp/u 9, 10, 1;
-    %inv 6, 1;
-    %or 8, 6, 1;
-    %load/v 9, v01160CD8_0, 1;
-    %load/v 10, v01160AC8_0, 1;
-    %cmp/u 9, 10, 1;
-    %inv 6, 1;
-    %or 8, 6, 1;
-    %load/v 9, v01160BD0_0, 1;
-    %load/v 10, v01160C28_0, 1;
-    %cmp/u 9, 10, 1;
-    %inv 6, 1;
-    %or 8, 6, 1;
-    %jmp/0xz  T_0.44, 8;
-    %vpi_call 2 43 "$display", "FAIL op=%b A=%h B=%h expR=%h gotR=%h expN=%b gotN=%b expZ=%b gotZ=%b expC=%b gotC=%b expV=%b gotV=%b", v01160B20_0, v01160E38_0, v01160A70_0, v01161150_0, v01160B78_0, v01160F98_0, v011611A8_0, v011610A0_0, v01160D30_0, v01160AC8_0, v01160CD8_0, v01160C28_0, v01160BD0_0;
-    %vpi_call 2 45 "$stop";
-    %jmp T_0.45;
-T_0.44 ;
-    %vpi_call 2 47 "$display", "PASS op=%b A=%h B=%h -> R=%h N=%b Z=%b C=%b V=%b", v01160B20_0, v01160E38_0, v01160A70_0, v01160B78_0, v011611A8_0, v01160D30_0, v01160CD8_0, v01160BD0_0;
-T_0.45 ;
-    %end;
-S_01155018 .scope module, "dut" "alu" 2 8, 3 2, S_01154248;
- .timescale -12 -12;
-L_01164090 .functor AND 16, v01161048_0, v011610F8_0, C4<1111111111111111>, C4<1111111111111111>;
-L_011640C8 .functor OR 16, v01161048_0, v011610F8_0, C4<0000000000000000>, C4<0000000000000000>;
-L_01164100 .functor OR 16, v01161048_0, v011610F8_0, C4<0000000000000000>, C4<0000000000000000>;
-L_01153050 .functor NOT 16, L_01164100, C4<0000000000000000>, C4<0000000000000000>, C4<0000000000000000>;
-L_01161278 .functor NOT 1, L_0119B908, C4<0>, C4<0>, C4<0>;
-L_0119E578 .functor OR 1, L_0119BE30, L_0119B960, C4<0>, C4<0>;
-L_0119E658 .functor XNOR 1, L_0119BF90, L_0119C0F0, C4<0>, C4<0>;
-L_0119E620 .functor XOR 1, L_0119BA10, L_0119BE88, C4<0>, C4<0>;
-L_0119E188 .functor AND 1, L_0119E658, L_0119E620, C4<1>, C4<1>;
-L_0119E268 .functor XOR 1, L_0119C148, L_0119BBC8, C4<0>, C4<0>;
-L_0119E498 .functor XOR 1, L_0119BEE0, L_0119BC20, C4<0>, C4<0>;
-L_0119E428 .functor AND 1, L_0119E268, L_0119E498, C4<1>, C4<1>;
-L_011613C8 .functor OR 1, L_0119BA68, L_0119BFE8, C4<0>, C4<0>;
-v01158F90_0 .net "A", 15 0, v01161048_0; 1 drivers
-v01158D80_0 .net "A_ext", 16 0, L_0119C250; 1 drivers
-v01158C20_0 .net "B", 15 0, v011610F8_0; 1 drivers
-v01158E30_0 .net "B_ext", 16 0, L_0119C2A8; 1 drivers
-v01158FE8_0 .alias "C", 0 0, v01160CD8_0;
-v01158960_0 .net "C_add", 0 0, L_0119BE30; 1 drivers
-v0119A8A8_0 .net "C_sub", 0 0, L_0119B960; 1 drivers
-v0119B2F8_0 .alias "N", 0 0, v011611A8_0;
-v0119A850_0 .var "R", 15 0;
-v0119AB68_0 .net "R_AND", 15 0, L_01164090; 1 drivers
-v0119ACC8_0 .net "R_ASR", 15 0, L_0119C300; 1 drivers
-v0119ADD0_0 .net "R_LSL", 15 0, L_0119C098; 1 drivers
-v0119B2A0_0 .net "R_LSR", 15 0, L_0119BD28; 1 drivers
-v0119B090_0 .net "R_NOR", 15 0, L_01153050; 1 drivers
-v0119AE80_0 .net "R_OR", 15 0, L_011640C8; 1 drivers
-v0119AD20_0 .net "R_add", 16 0, L_0119BCD0; 1 drivers
-v0119AFE0_0 .net "R_sub", 16 0, L_0119BAC0; 1 drivers
-v0119AD78_0 .alias "V", 0 0, v01160BD0_0;
-v0119AAB8_0 .net "V_add", 0 0, L_0119BA68; 1 drivers
-v0119B1F0_0 .net "V_sub", 0 0, L_0119BFE8; 1 drivers
-v0119A900_0 .alias "Z", 0 0, v01160D30_0;
-v0119AF30_0 .net *"_s0", 0 0, C4<0>; 1 drivers
-v0119B038_0 .net *"_s100", 0 0, L_0119E428; 1 drivers
-v0119AC18_0 .net *"_s102", 0 0, C4<0>; 1 drivers
-v0119AB10_0 .net *"_s16", 15 0, L_01164100; 1 drivers
-v0119B0E8_0 .net *"_s21", 3 0, L_0119B9B8; 1 drivers
-v0119B140_0 .net *"_s25", 3 0, L_0119BC78; 1 drivers
-v0119B248_0 .net *"_s29", 3 0, L_0119B8B0; 1 drivers
-v0119ABC0_0 .net *"_s34", 15 0, C4<0000000000000000>; 1 drivers
-v0119AED8_0 .net *"_s38", 2 0, C4<000>; 1 drivers
-v0119B198_0 .net *"_s4", 0 0, C4<0>; 1 drivers
-v0119AE28_0 .net *"_s40", 0 0, L_0119B858; 1 drivers
-v0119AA60_0 .net *"_s43", 0 0, L_0119BD80; 1 drivers
-v0119A958_0 .net *"_s44", 0 0, C4<0>; 1 drivers
-v0119AC70_0 .net *"_s48", 2 0, C4<001>; 1 drivers
-v0119A9B0_0 .net *"_s50", 0 0, L_0119BDD8; 1 drivers
-v0119AF88_0 .net *"_s53", 0 0, L_0119B908; 1 drivers
-v0119AA08_0 .net *"_s54", 0 0, L_01161278; 1 drivers
-v0119B350_0 .net *"_s56", 0 0, C4<0>; 1 drivers
-v0119B7C8_0 .net *"_s62", 2 0, C4<000>; 1 drivers
-v0119B400_0 .net *"_s64", 0 0, L_0119BF38; 1 drivers
-v0119B458_0 .net *"_s67", 0 0, L_0119BF90; 1 drivers
-v0119B610_0 .net *"_s69", 0 0, L_0119C0F0; 1 drivers
-v0119B718_0 .net *"_s70", 0 0, L_0119E658; 1 drivers
-v0119B668_0 .net *"_s73", 0 0, L_0119BA10; 1 drivers
-v0119B3A8_0 .net *"_s75", 0 0, L_0119BE88; 1 drivers
-v0119B4B0_0 .net *"_s76", 0 0, L_0119E620; 1 drivers
-v0119B508_0 .net *"_s78", 0 0, L_0119E188; 1 drivers
-v0119B560_0 .net *"_s80", 0 0, C4<0>; 1 drivers
-v0119B770_0 .net *"_s84", 2 0, C4<001>; 1 drivers
-v0119B5B8_0 .net *"_s86", 0 0, L_0119BB18; 1 drivers
-v0119B6C0_0 .net *"_s89", 0 0, L_0119C148; 1 drivers
-v01160C80_0 .net *"_s91", 0 0, L_0119BBC8; 1 drivers
-v01160EE8_0 .net *"_s92", 0 0, L_0119E268; 1 drivers
-v01160E90_0 .net *"_s95", 0 0, L_0119BEE0; 1 drivers
-v01160F40_0 .net *"_s97", 0 0, L_0119BC20; 1 drivers
-v01160D88_0 .net *"_s98", 0 0, L_0119E498; 1 drivers
-v01160DE0_0 .net "fun", 2 0, v0119BB70_0; 1 drivers
-E_0115BF18/0 .event edge, v01160DE0_0, v0119AD20_0, v0119AFE0_0, v0119AB68_0;
-E_0115BF18/1 .event edge, v0119AE80_0, v0119B090_0, v0119ADD0_0, v0119B2A0_0;
-E_0115BF18/2 .event edge, v0119ACC8_0;
-E_0115BF18 .event/or E_0115BF18/0, E_0115BF18/1, E_0115BF18/2;
-L_0119C250 .concat [ 16 1 0 0], v01161048_0, C4<0>;
-L_0119C2A8 .concat [ 16 1 0 0], v011610F8_0, C4<0>;
-L_0119BCD0 .arith/sum 17, L_0119C250, L_0119C2A8;
-L_0119BAC0 .arith/sub 17, L_0119C250, L_0119C2A8;
-L_0119B9B8 .part v011610F8_0, 0, 4;
-L_0119C098 .shift/l 16, v01161048_0, L_0119B9B8;
-L_0119BC78 .part v011610F8_0, 0, 4;
-L_0119BD28 .shift/r 16, v01161048_0, L_0119BC78;
-L_0119B8B0 .part v011610F8_0, 0, 4;
-L_0119C300 .shift/rs 16, v01161048_0, L_0119B8B0;
-L_0119C1F8 .part v0119A850_0, 15, 1;
-L_0119C1A0 .cmp/eq 16, v0119A850_0, C4<0000000000000000>;
-L_0119B858 .cmp/eq 3, v0119BB70_0, C4<000>;
-L_0119BD80 .part L_0119BCD0, 16, 1;
-L_0119BE30 .functor MUXZ 1, C4<0>, L_0119BD80, L_0119B858, C4<>;
-L_0119BDD8 .cmp/eq 3, v0119BB70_0, C4<001>;
-L_0119B908 .part L_0119BAC0, 16, 1;
-L_0119B960 .functor MUXZ 1, C4<0>, L_01161278, L_0119BDD8, C4<>;
-L_0119BF38 .cmp/eq 3, v0119BB70_0, C4<000>;
-L_0119BF90 .part v01161048_0, 15, 1;
-L_0119C0F0 .part v011610F8_0, 15, 1;
-L_0119BA10 .part L_0119BCD0, 15, 1;
-L_0119BE88 .part v01161048_0, 15, 1;
-L_0119BA68 .functor MUXZ 1, C4<0>, L_0119E188, L_0119BF38, C4<>;
-L_0119BB18 .cmp/eq 3, v0119BB70_0, C4<001>;
-L_0119C148 .part v01161048_0, 15, 1;
-L_0119BBC8 .part v011610F8_0, 15, 1;
-L_0119BEE0 .part L_0119BAC0, 15, 1;
-L_0119BC20 .part v01161048_0, 15, 1;
-L_0119BFE8 .functor MUXZ 1, C4<0>, L_0119E428, L_0119BB18, C4<>;
-    .scope S_01155018;
-T_1 ;
-    %wait E_0115BF18;
-    %set/v v0119A850_0, 0, 16;
-    %load/v 8, v01160DE0_0, 3;
-    %cmpi/u 8, 0, 3;
-    %jmp/1 T_1.0, 6;
-    %cmpi/u 8, 1, 3;
-    %jmp/1 T_1.1, 6;
-    %cmpi/u 8, 2, 3;
-    %jmp/1 T_1.2, 6;
-    %cmpi/u 8, 3, 3;
-    %jmp/1 T_1.3, 6;
-    %cmpi/u 8, 4, 3;
-    %jmp/1 T_1.4, 6;
-    %cmpi/u 8, 5, 3;
-    %jmp/1 T_1.5, 6;
-    %cmpi/u 8, 6, 3;
-    %jmp/1 T_1.6, 6;
-    %cmpi/u 8, 7, 3;
-    %jmp/1 T_1.7, 6;
-    %jmp T_1.9;
-T_1.0 ;
-    %load/v 8, v0119AD20_0, 16; Only need 16 of 17 bits
-; Save base=8 wid=16 in lookaside.
-    %set/v v0119A850_0, 8, 16;
-    %jmp T_1.9;
-T_1.1 ;
-    %load/v 8, v0119AFE0_0, 16; Only need 16 of 17 bits
-; Save base=8 wid=16 in lookaside.
-    %set/v v0119A850_0, 8, 16;
-    %jmp T_1.9;
-T_1.2 ;
-    %load/v 8, v0119AB68_0, 16;
-    %set/v v0119A850_0, 8, 16;
-    %jmp T_1.9;
-T_1.3 ;
-    %load/v 8, v0119AE80_0, 16;
-    %set/v v0119A850_0, 8, 16;
-    %jmp T_1.9;
-T_1.4 ;
-    %load/v 8, v0119B090_0, 16;
-    %set/v v0119A850_0, 8, 16;
-    %jmp T_1.9;
-T_1.5 ;
-    %load/v 8, v0119ADD0_0, 16;
-    %set/v v0119A850_0, 8, 16;
-    %jmp T_1.9;
-T_1.6 ;
-    %load/v 8, v0119B2A0_0, 16;
-    %set/v v0119A850_0, 8, 16;
-    %jmp T_1.9;
-T_1.7 ;
-    %load/v 8, v0119ACC8_0, 16;
-    %set/v v0119A850_0, 8, 16;
-    %jmp T_1.9;
-T_1.9 ;
-    %jmp T_1;
-    .thread T_1, $push;
-    .scope S_01154248;
-T_2 ;
-    %movi 8, 1, 16;
-    %set/v v01160E38_0, 8, 16;
-    %movi 8, 1, 16;
-    %set/v v01160A70_0, 8, 16;
-    %set/v v01160B20_0, 0, 3;
-    %fork TD_alu_tb.do_test, S_01154C60;
-    %join;
-    %set/v v01160E38_0, 1, 16;
-    %movi 8, 1, 16;
-    %set/v v01160A70_0, 8, 16;
-    %set/v v01160B20_0, 0, 3;
-    %fork TD_alu_tb.do_test, S_01154C60;
-    %join;
-    %movi 8, 32767, 16;
-    %set/v v01160E38_0, 8, 16;
-    %movi 8, 1, 16;
-    %set/v v01160A70_0, 8, 16;
-    %set/v v01160B20_0, 0, 3;
-    %fork TD_alu_tb.do_test, S_01154C60;
-    %join;
-    %movi 8, 3, 16;
-    %set/v v01160E38_0, 8, 16;
-    %movi 8, 7, 16;
-    %set/v v01160A70_0, 8, 16;
-    %movi 8, 1, 3;
-    %set/v v01160B20_0, 8, 3;
-    %fork TD_alu_tb.do_test, S_01154C60;
-    %join;
-    %set/v v01160E38_0, 0, 16;
-    %movi 8, 1, 16;
-    %set/v v01160A70_0, 8, 16;
-    %movi 8, 1, 3;
-    %set/v v01160B20_0, 8, 3;
-    %fork TD_alu_tb.do_test, S_01154C60;
-    %join;
-    %movi 8, 32768, 16;
-    %set/v v01160E38_0, 8, 16;
-    %movi 8, 32767, 16;
-    %set/v v01160A70_0, 8, 16;
-    %movi 8, 1, 3;
-    %set/v v01160B20_0, 8, 3;
-    %fork TD_alu_tb.do_test, S_01154C60;
-    %join;
-    %movi 8, 255, 16;
-    %set/v v01160E38_0, 8, 16;
-    %movi 8, 3855, 16;
-    %set/v v01160A70_0, 8, 16;
-    %movi 8, 2, 3;
-    %set/v v01160B20_0, 8, 3;
-    %fork TD_alu_tb.do_test, S_01154C60;
-    %join;
-    %movi 8, 255, 16;
-    %set/v v01160E38_0, 8, 16;
-    %movi 8, 3855, 16;
-    %set/v v01160A70_0, 8, 16;
-    %movi 8, 3, 3;
-    %set/v v01160B20_0, 8, 3;
-    %fork TD_alu_tb.do_test, S_01154C60;
-    %join;
-    %movi 8, 255, 16;
-    %set/v v01160E38_0, 8, 16;
-    %movi 8, 3855, 16;
-    %set/v v01160A70_0, 8, 16;
-    %movi 8, 4, 3;
-    %set/v v01160B20_0, 8, 3;
-    %fork TD_alu_tb.do_test, S_01154C60;
-    %join;
-    %movi 8, 1, 16;
-    %set/v v01160E38_0, 8, 16;
-    %movi 8, 4, 16;
-    %set/v v01160A70_0, 8, 16;
-    %movi 8, 5, 3;
-    %set/v v01160B20_0, 8, 3;
-    %fork TD_alu_tb.do_test, S_01154C60;
-    %join;
-    %movi 8, 32768, 16;
-    %set/v v01160E38_0, 8, 16;
-    %movi 8, 1, 16;
-    %set/v v01160A70_0, 8, 16;
-    %movi 8, 6, 3;
-    %set/v v01160B20_0, 8, 3;
-    %fork TD_alu_tb.do_test, S_01154C60;
-    %join;
-    %movi 8, 32768, 16;
-    %set/v v01160E38_0, 8, 16;
-    %movi 8, 1, 16;
-    %set/v v01160A70_0, 8, 16;
-    %set/v v01160B20_0, 1, 3;
-    %fork TD_alu_tb.do_test, S_01154C60;
-    %join;
-    %vpi_call 2 66 "$display", "All tests completed.";
-    %vpi_call 2 67 "$finish";
-    %end;
-    .thread T_2;
-# The file index is used to find the file name in the following table.
-:file_names 4;
-    "N/A";
-    "<interactive>";
-    "alu_tb.v";
-    "alu.v";
+$date
+	Sat Dec 20 16:11:30 2025
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module alu_tb $end
+$var wire 1 ! C $end
+$var wire 1 " N $end
+$var wire 16 # R [15:0] $end
+$var wire 1 $ V $end
+$var wire 1 % Z $end
+$var reg 16 & A [15:0] $end
+$var reg 16 ' B [15:0] $end
+$var reg 3 ( fun [2:0] $end
+$scope module dut $end
+$var wire 16 ) A [15:0] $end
+$var wire 17 * A_ext [16:0] $end
+$var wire 16 + B [15:0] $end
+$var wire 17 , B_ext [16:0] $end
+$var wire 1 ! C $end
+$var wire 1 - C_add $end
+$var wire 1 . C_sub $end
+$var wire 1 " N $end
+$var wire 16 / R_AND [15:0] $end
+$var wire 16 0 R_ASR [15:0] $end
+$var wire 16 1 R_LSL [15:0] $end
+$var wire 16 2 R_LSR [15:0] $end
+$var wire 16 3 R_NOR [15:0] $end
+$var wire 16 4 R_OR [15:0] $end
+$var wire 17 5 R_add [16:0] $end
+$var wire 17 6 R_sub [16:0] $end
+$var wire 1 $ V $end
+$var wire 1 7 V_add $end
+$var wire 1 8 V_sub $end
+$var wire 1 % Z $end
+$var wire 3 9 fun [2:0] $end
+$var reg 16 : R [15:0] $end
+$upscope $end
+$scope task do_test $end
+$var reg 16 ; a [15:0] $end
+$var reg 16 < b [15:0] $end
+$var reg 1 = expC $end
+$var reg 1 > expN $end
+$var reg 16 ? expR [15:0] $end
+$var reg 17 @ expR_ext [16:0] $end
+$var reg 1 A expV $end
+$var reg 1 B expZ $end
+$var reg 3 C op [2:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+b0 C
+xB
+xA
+bx @
+bx ?
+x>
+x=
+b1 <
+b1 ;
+b10 :
+b0 9
+08
+07
+b0 6
+b10 5
+b1 4
+b1111111111111110 3
+b0 2
+b10 1
+b0 0
+b1 /
+0.
+0-
+b1 ,
+b1 +
+b1 *
+b1 )
+b0 (
+b1 '
+b1 &
+0%
+0$
+b10 #
+0"
+0!
+$end
+#1
+1!
+b0 3
+1-
+b1111111111111111 4
+b0 :
+1%
+b0 #
+b1111111111111111 &
+b1111111111111111 )
+b10000000000000000 5
+b1111111111111110 6
+b1111111111111111 *
+b1111111111111110 1
+b111111111111111 2
+b1111111111111111 0
+b1111111111111111 ;
+0A
+0=
+0B
+0>
+b10 ?
+b10 @
+#2
+1$
+17
+0!
+b1000000000000000 3
+0-
+1"
+b111111111111111 4
+b1000000000000000 :
+0%
+b1000000000000000 #
+b111111111111111 &
+b111111111111111 )
+b1000000000000000 5
+b111111111111110 6
+b111111111111111 *
+b11111111111111 2
+b11111111111111 0
+b111111111111111 ;
+1=
+1B
+b0 ?
+b10000000000000000 @
+#3
+0!
+0$
+b1111111111111000 3
+0.
+07
+b11 /
+b111 4
+b1111111111111100 :
+0%
+b1111111111111100 #
+b1 (
+b1 9
+b111 '
+b111 +
+b111 ,
+b11 &
+b11 )
+b1010 5
+b11111111111111100 6
+b11 *
+b110000000 1
+b0 2
+b0 0
+b1 C
+b111 <
+b11 ;
+1A
+0=
+0B
+1>
+b1000000000000000 ?
+b1000000000000000 @
+#4
+b1111111111111110 3
+b0 /
+b1 4
+b1111111111111111 :
+0%
+b1111111111111111 #
+b1 '
+b1 +
+b1 ,
+b0 &
+b0 )
+b1 5
+b11111111111111111 6
+b0 *
+b0 1
+b1 <
+b0 ;
+0A
+b1111111111111100 ?
+b11111111111111100 @
+#5
+1$
+1!
+18
+1.
+b0 3
+0"
+b1111111111111111 4
+b1 :
+0%
+b1 #
+b111111111111111 '
+b111111111111111 +
+b111111111111111 ,
+b1000000000000000 &
+b1000000000000000 )
+b1111111111111111 5
+b1 6
+b1000000000000000 *
+b1 2
+b1111111111111111 0
+b111111111111111 <
+b1000000000000000 ;
+b1111111111111111 ?
+b11111111111111111 @
+#6
+0!
+0$
+b1111000000000000 3
+0.
+08
+b1111 /
+b111111111111 4
+b1111 :
+0%
+b1111 #
+b10 (
+b10 9
+b111100001111 '
+b111100001111 +
+b111100001111 ,
+b11111111 &
+b11111111 )
+b1000000001110 5
+b11111000111110000 6
+b11111111 *
+b1000000000000000 1
+b0 2
+b0 0
+b10 C
+b111100001111 <
+b11111111 ;
+1A
+1=
+0>
+b1 ?
+b1 @
+#7
+b111111111111 :
+0%
+b111111111111 #
+b11 (
+b11 9
+b11 C
+0A
+0=
+b1111 ?
+b1111 @
+#8
+1"
+b1111000000000000 :
+0%
+b1111000000000000 #
+b100 (
+b100 9
+b100 C
+b111111111111 ?
+b111111111111 @
+#9
+0"
+b1111111111111010 3
+b10000 1
+b0 /
+b101 4
+b10000 :
+0%
+b10000 #
+b101 (
+b101 9
+b100 '
+b100 +
+b100 ,
+b1 &
+b1 )
+b101 5
+b11111111111111101 6
+b1 *
+b101 C
+b100 <
+b1 ;
+1>
+b1111000000000000 ?
+b1111000000000000 @
+#10
+b111111111111110 3
+b1000000000000001 4
+b100000000000000 :
+0%
+b100000000000000 #
+b110 (
+b110 9
+b1 '
+b1 +
+b1 ,
+b1000000000000000 &
+b1000000000000000 )
+b1000000000000001 5
+b111111111111111 6
+b1000000000000000 *
+b0 1
+b100000000000000 2
+b1100000000000000 0
+b110 C
+b1 <
+b1000000000000000 ;
+0>
+b10000 ?
+b10000 @
+#11
+1"
+b1100000000000000 :
+0%
+b1100000000000000 #
+b111 (
+b111 9
+b111 C
+b100000000000000 ?
+b100000000000000 @
+#12
+1>
+b1100000000000000 ?
+b1100000000000000 @

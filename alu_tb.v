@@ -50,6 +50,9 @@ module alu_tb;
     endtask
 
     initial begin
+        $dumpfile("alu_tb.vcd");
+        $dumpvars(0, alu_tb);
+        
         do_test(16'h0001, 16'h0001, 3'b000);
         do_test(16'hFFFF, 16'h0001, 3'b000);
         do_test(16'h7FFF, 16'h0001, 3'b000);
