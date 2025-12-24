@@ -10,22 +10,16 @@ module register_file(
     output reg[15:0] dataA,
     output reg[15:0] dataB
 );
-
+    
     // addrR decoder
-    reg r0, r1, r2, r3, r4, r5, r6, r7;
-    always @(*) begin
-        case(addrR)
-            3'b000: r0 = 1'b1;
-            3'b001: r1 = 1'b1;
-            3'b010: r2 = 1'b1;
-            3'b011: r3 = 1'b1;
-            3'b100: r4 = 1'b1;
-            3'b101: r5 = 1'b1;
-            3'b110: r6 = 1'b1;
-            3'b111: r7 = 1'b1;
-            default:;
-        endcase
-    end
+    wire r0 = (addrR == 3'b000);
+    wire r1 = (addrR == 3'b001);
+    wire r2 = (addrR == 3'b010);
+    wire r3 = (addrR == 3'b011);
+    wire r4 = (addrR == 3'b100);
+    wire r5 = (addrR == 3'b101);
+    wire r6 = (addrR == 3'b110);
+    wire r7 = (addrR == 3'b111);
 
     // Write enables
     wire we_r0, we_r1, we_r2, we_r3, we_r4, we_r5, we_r6, we_r7;

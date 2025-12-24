@@ -34,3 +34,7 @@ This is my attempt to convert the very same design into Verilog. I used [Icarus 
 - 5 states: Fetch, Decode, Execute, Memory and Writeback
 - Uses a 3-bit counter and resets either from a reset instruction or the counter reaching clk=5 operations
 
+## Instruction ROM
+- Input of address, in this case is the Program Counter (PC)
+- Outputs instruction in preperation for the Intruction Register (IR)
+

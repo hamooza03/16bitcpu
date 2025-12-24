@@ -38,7 +38,7 @@ module alu(
             3'b101: R = R_LSL; // LSL
             3'b110: R = R_LSR; // LSR
             3'b111: R = R_ASR; // ASR
-            default: ;
+            default:;
         endcase
     end
 
