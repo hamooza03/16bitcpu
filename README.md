@@ -28,7 +28,7 @@ This is my attempt to convert the very same design into Verilog. I used [Icarus 
 - Output flags are included such as N, Z, C, and V
 
 ## Register File
-- The CPU uses an 8 x 16-bit register file
+- The CPU uses an 8 x 16-bit registers
 
 ## Finite State Machine
 - 5 states: Fetch, Decode, Execute, Memory and Writeback
